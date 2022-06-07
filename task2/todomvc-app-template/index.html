@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Template • TodoMVC</title>
+		<link rel="stylesheet" href="node_modules/todomvc-common/base.css">
+		<link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
+	</head>
+	<body>
+		<section class="todoapp">
+			<header class="header">
+				<h1>todos</h1>
+				<input class="new-todo" placeholder="What needs to be done?" autofocus>
+			</header>
+			<section class="main">
+				<input id="toggle-all" class="toggle-all" type="checkbox">
+				<label for="toggle-all">Mark all as complete</label>
+				<ul class="todo-list">
+<!--					<li class="completed">-->
+<!--						<div class="view">-->
+<!--							<input class="toggle" type="checkbox" checked>-->
+<!--							<label>Taste JavaScript</label>-->
+<!--							<button class="destroy"></button>-->
+<!--						</div>-->
+<!--						<input class="edit" value="Create a TodoMVC template">-->
+<!--					</li>-->
+<!--					<li>-->
+<!--						<div class="view">-->
+<!--							<input class="toggle" type="checkbox">-->
+<!--							<label>Buy a unicorn</label>-->
+<!--							<button class="destroy"></button>-->
+<!--						</div>-->
+<!--						<input class="edit" value="Rule the web">-->
+<!--					</li>-->
+				</ul>
+			</section>
+			<footer class="footer">
+				<span class="todo-count"><strong class="item-left">0</strong> item left</span>
+				<ul class="filters">
+					<li>
+						<a class="param-link">All</a>
+					</li>
+					<li>
+						<a class="param-link">Active</a>
+					</li>
+					<li>
+						<a class="param-link">Completed</a>
+					</li>
+				</ul>
+				<button class="clear-completed">Clear completed</button>
+			</footer>
+		</section>
+		<footer class="info">
+<!--			<p>Double-click to edit a todo</p>-->
+			<p>Created by <a target="_blank" href="https://royal-safari.com/afrika/wp-content/uploads/sites/17/2019/03/WW188829-753x377.jpg">some kind of rhino</a></p>
+			<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+		</footer>
+		<div class="wrapper">
+			<div class="wrapper-container">
+				<div class="wrapper-container__background"></div>
+				<div class="wrapper-container-content">
+					<div class="wrapper-container-content-header">
+						<span class="wrapper-container-content-header__text">You are here again...</span>
+					</div>
+					<form class="wrapper-container-content-form">
+						<div class="wrapper-container-content-form-input">
+							<span class="wrapper-container-content-form-input__label">Login</span>
+							<div class="wrapper-container-content-form-input-field">
+								<input class="wrapper-container-content-form-input-field__area" name="login" type="text" placeholder="Andrew123">
+							</div>
+						</div>
+						<div class="wrapper-container-content-form-input">
+							<span class="wrapper-container-content-form-input__label">Password</span>
+							<div class="wrapper-container-content-form-input-field">
+								<input class="wrapper-container-content-form-input-field__area" name="password" type="password" placeholder="Type password">
+							</div>
+						</div>
+						<div class="wrapper-container-content-form-error">
+							<span class="wrapper-container-content-form-error__text"></span>
+						</div>
+						<div class="wrapper-container-content-form-button">
+							<button type="submit" class="wrapper-container-content-form-button__area">Sign in</button>
+						</div>
+					</form>
+					<div class="wrapper-container-content-footer">
+						<span class="wrapper-container-content-footer__text">First time here?</span>
+						<a class="state-link">Register</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Scripts here. Don't remove ↓ -->
+		<script src="node_modules/todomvc-common/base.js"></script>
+		<script src="./dist/bundle.js"></script>
+	</body>
+</html>

@@ -1,0 +1,44 @@
+version: "3"
+
+services:
+  nginx:
+    build:
+      context: todomvc-app-template
+    container_name: nginx
+    restart: on-failure
+    ports:
+      - "80:80"
+    volumes:
+      - ./todomvc-app-template:/var/www/todomvc-app-template
+      - ./api:/var/www/todomvc-app-template/api
+    depends_on:
+      - 'php-fpm'
+
+  php-fpm:
+    build:
+      context: api
+    container_name: php-fpm
+    volumes:
+      - ./api:/app
+    depends_on:
+      - 'mysql'
+
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password
+    expose:
+      - '3306'
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_DATABASE: "vl_testing"
+      MYSQL_USER: "user"
+      MYSQL_PASSWORD: "password"
+      MYSQL_ROOT_PASSWORD: "password"
+    volumes:
+      - mysql-data:/var/lib/mysql:delegated
+
+volumes:
+  mysql-data: {}
