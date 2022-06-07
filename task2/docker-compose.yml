@@ -9,7 +9,6 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./todomvc-app-template:/var/www/todomvc-app-template
       - ./api:/var/www/todomvc-app-template/api
     depends_on:
       - 'php-fpm'
