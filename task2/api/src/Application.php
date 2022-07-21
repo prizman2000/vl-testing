@@ -4,6 +4,7 @@ namespace App;
 
 use App\Controller\TodoController;
 use App\Controller\UserController;
+use App\Entity\Database;
 
 class Application
 {
@@ -12,12 +13,15 @@ class Application
 
 	public function __construct()
 	{
-		$this->user_controller = new UserController();
-		$this->todo_controller = new TodoController();
+        $db = new Database();
+        $connection = $db->connect();
+		$this->user_controller = new UserController($connection);
+		$this->todo_controller = new TodoController($connection);
 	}
 
 	public function run($request)
 	{
+//        print_r('alo');
 		if ($request['request_params']['entity'] == 'post') {
 			preg_match('/Bearer\s(\S+)/', $_SERVER['HTTP_AUTHORIZATION'], $matches);
 			if ($this->user_controller->login_check($matches)['success']) {

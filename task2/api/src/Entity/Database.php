@@ -8,10 +8,6 @@ use PDOException;
 
 class Database
 {
-    private string $host = 'mysql';
-    private string $db_name = 'vl_testing';
-    private string $username = 'user';
-    private string $password = 'password';
     private $connection;
 
     public function connect()
@@ -19,7 +15,11 @@ class Database
         $this->connection = null;
 
         try {
-            $this->connection = new PDO('mysql:host=' . $this->host . ';port=3306;dbname=' . $this->db_name, $this->username, $this->password);
+            $this->connection = new PDO(
+                'mysql:host=' . getenv('DB_HOST') .
+                ';port=3306;dbname=' . getenv('DB_NAME'),
+                getenv('DB_USERNAME'),
+                getenv('DB_PASSWORD'));
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             try {
                 $this->connection->query("SELECT 1 FROM user LIMIT 1");

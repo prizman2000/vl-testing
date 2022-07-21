@@ -5,7 +5,7 @@ namespace App\Repository;
 use App\Entity\User;
 use PDO;
 
-class UserMapper
+class UserRepository
 {
 	private $connection;
 	private string $table = 'user';

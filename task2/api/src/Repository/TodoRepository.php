@@ -4,7 +4,7 @@ namespace App\Repository;
 
 use PDO;
 
-class TodoMapper
+class TodoRepository
 {
 	private $connection;
 	private string $todoTable = 'todo';

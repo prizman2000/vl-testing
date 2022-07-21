@@ -13,4 +13,8 @@ RUN apk add --no-cache --update mysql-dev && \
 
 COPY config/php/php.ini "/usr/local/etc/php/php.ini"
 
+COPY ./ /app
 WORKDIR /app
+
+RUN composer install --optimize-autoloader && \
+    composer dump-autoload --classmap-authoritative --optimize

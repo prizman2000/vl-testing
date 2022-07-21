@@ -8,8 +8,6 @@ services:
     restart: on-failure
     ports:
       - "80:80"
-    volumes:
-      - ./api:/var/www/todomvc-app-template/api
     depends_on:
       - 'php-fpm'
 
@@ -19,6 +17,8 @@ services:
     container_name: php-fpm
     volumes:
       - ./api:/app
+    env_file:
+      - ./api/.env
     depends_on:
       - 'mysql'
 

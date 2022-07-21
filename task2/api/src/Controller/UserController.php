@@ -2,9 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Database;
 use App\Entity\User;
-use App\Repository\UserMapper;
+use App\Repository\UserRepository;
 use DateTimeImmutable;
 use Exception;
 use Firebase\JWT\JWT;
@@ -14,17 +13,16 @@ use PDO;
 class UserController
 {
 	private ?PDO $db;
-	private UserMapper $mapper;
+	private UserRepository $mapper;
 
-	public function __construct()
+	public function __construct(?PDO $connection)
 	{
-		$database = new Database();
-		$this->db = $database->connect();
-		$this->mapper = new UserMapper($this->db);
+		$this->db = $connection;
+		$this->mapper = new UserRepository($this->db);
 	}
 
-	public function authenticate_user(string $login, string $password)
-	{
+	public function authenticate_user(string $login, string $password): bool|string
+    {
 		try {
 			if ($login and $password) {
 				$user = new User($login, $password);
@@ -60,8 +58,8 @@ class UserController
 		}
 	}
 
-	public function register_user(string $login, string $password)
-	{
+	public function register_user(string $login, string $password): bool|string
+    {
 		try {
 			if ($login and $password) {
 				$user = new User($login, password_hash($password, PASSWORD_DEFAULT));
@@ -82,8 +80,8 @@ class UserController
 		}
 	}
 
-	public function logout_user()
-	{
+	public function logout_user(): bool|string
+    {
 		try {
 			return json_encode(
 				array('error' => 'Logged out successfully')

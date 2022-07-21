@@ -2,22 +2,20 @@
 
 namespace App\Controller;
 
-use App\Entity\Database;
-use App\Repository\TodoMapper;
+use App\Repository\TodoRepository;
 use Exception;
 use PDO;
 
 class TodoController
 {
 	private ?PDO $db;
-	private TodoMapper $mapper;
+	private TodoRepository $mapper;
 	private string $user;
 
-	public function __construct()
+	public function __construct(?PDO $connection)
 	{
-		$database = new Database();
-		$this->db = $database->connect();
-		$this->mapper = new TodoMapper($this->db);
+        $this->db = $connection;
+		$this->mapper = new TodoRepository($this->db);
 	}
 
 	public function set_user(string $username)
